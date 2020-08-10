@@ -1,5 +1,7 @@
+# importing the numpy module using conventional notation
 import numpy as np
 
+# create a 
 a = np.array([4, 10, 12, 23, -2, -1, 0, 0, 0, -6, 3, -7])
 
 # How many negative numbers are there?
@@ -10,12 +12,21 @@ a = np.array([4, 10, 12, 23, -2, -1, 0, 0, 0, -6, 3, -7])
 # I found `np.count_zero` while looking for examples.
 # https://github.com/numpy/numpy/issues/8913
 # negative_numbers = np.count_nonzero(a < 0)
+
+# Inside the parentheses I can utilize numpy's ability to create
+# boolean masks using relational operators. a < 0 creates an array
+# of boolean values - True = 1, False = 0 if the value is less than
+# Zero - negative numbers. I apply the np.sum function
+# To collect all 'True' values, represented by the value 1 and store it
+# as a variable.
 negative_numbers = (a < 0).sum()
 print(f"Negative numbers: {negative_numbers}")
 
 
 # How many positive numbers are there?
 # positive_numbers = np.count_nonzero(a > 0)
+# Similar to the exercise above, I create a boolean mask or filter array
+# To create an array of 1's and 0's 
 positive_numbers = (a > 0).sum()
 print(f"Positive numbers: {positive_numbers}")
 
