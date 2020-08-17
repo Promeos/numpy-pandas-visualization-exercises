@@ -11,7 +11,7 @@ a = np.array([4, 10, 12, 23, -2, -1, 0, 0, 0, -6, 3, -7])
 # negative_numbers = np.count_nonzero(a < 0)
 
 # Inside the parentheses I can utilize numpy's ability to create
-# boolean masks using relational operators. a < 0 creates an array
+# boolean masks using relational operators. a < 0 creates a series
 # of boolean values - True = 1, False = 0 if the value is less than
 # Zero - selecting only negative numbers. I apply the `np.sum` function
 # To collect all 'True' values, represented by the value 1 and store it
@@ -23,11 +23,11 @@ print(f"Negative numbers: {negative_numbers}")
 
 # positive_numbers = np.count_nonzero(a > 0)
 
-# Similar to the exercise above, I create a boolean mask or filter array
-# To create an array True/False, 1's and 0's based on a conditional expression.
+# Similar to the exercise above, I create a boolean mask or filter series
+# To create a series of True/False, 1's and 0's based on a conditional expression.
 # I want to find all the values in a that are greater than zero. Selecting
 # Positive Values! Once the 1's/0's are generated, I call the `np.sum` function
-# To add up all True values. This tells me how many elements in array `a` have a
+# To add up all True values. This tells me how many elements the series `a` have a
 # Value greater than 0.  
 positive_numbers = (a > 0).sum()
 print(f"Positive numbers: {positive_numbers}")
@@ -38,7 +38,7 @@ print(f"Positive numbers: {positive_numbers}")
 
 # Viewing the code snippet above ^, I had no idea about '|', '&', '~'
 # As a work around I use a boolean mask to search for values greater than 0.
-# I then evaluate the filter array once more looking for numbers that are easily divisible
+# I then evaluate the filter series once more looking for numbers that are easily divisible
 # by 2.
 
 # Now I know! Thank you Zach! Due to Numpy syntax, I'll need to place each
@@ -46,16 +46,16 @@ print(f"Positive numbers: {positive_numbers}")
 # To compare the boolean values from the two conditional expressions. Yay!
 # Using Numpy's equivalent of `and` == '&'. Once everything inside of the parentheses
 # Evaluates, I can use the `np.sum` function 'to vaccuum up' all 1's. It will return
-# A single value, total positive even numbers in array `a` which I store in the 
+# A single value, total positive even numbers in series `a` which I store in the 
 # Variable positive_evens.
 positive_evens = ((a > 0) & (a % 2 == 0)).sum()
 print(f"Positive even numbers: {positive_evens}")
 
 # If you were to add 3 to each data point, how many positive numbers would there be?
 
-# Using a Numpy's vectorization/broadcasting, I can apply a calculation to an array
-# 'a + 3'. This means that every element in array `a` with have 3 added to its value.
-# I can compare the resulting array in a conditional expression - all values greater than 0.
+# Using a Numpy's vectorization/broadcasting, I can apply a calculation to a series
+# 'a + 3'. This means that every element in series `a` with have 3 added to its value.
+# I can compare the resulting series in a conditional expression - all values greater than 0.
 # Once the conditional expression is finished evaluating, I can use `np.sum` to total
 # All True/1's values in the boolean mask. I store that value in a variable called
 # 'plus_3_positive_numbers' for safe keeping.
@@ -65,7 +65,7 @@ print(f"Postive numbers after a + 3: {plus_3_postive_numbers}")
 # If you squared each number, what would the new mean and standard deviation be?
 
 # Yay no more `sum(list)` / `len(list)``. I include the mean and standard deviation before
-# Squaring array `a` to see the current mean and standard deviation. 
+# Squaring series `a` to see the current mean and standard deviation. 
 a_mean = a.mean(dtype=np.float64) # Docs say np.float64 is more precise
 a_stddev = a.std(dtype=np.float64)
 print("\na's Mean and Standard Deviation BEFORE -> a ** 2")
@@ -73,7 +73,7 @@ print("-" * 40)
 print("Mean --- {}\nStandard Deviation --- {}".format(a_mean, a_stddev))
 
 # Because I'm not using a relational operator == No boolean values, I can perform 
-# Math operations directly on array `a`. Expression inside of the parentheses is finished
+# Math operations directly on series `a`. Expression inside of the parentheses is finished
 # Evaluating, I can call `np.mean`\`np.std` to calculate the mean and standard deviation
 # Of `a` squared.
 a_squared_mean = (a ** 2).mean(dtype=np.float64)
@@ -87,7 +87,7 @@ print("Mean --- {}\nStandard Deviation --- {}\n".format(a_squared_mean, a_square
 # This is done by subtracting the mean from each data point. Center the data set.
 
 # I did not know this was called `centering`. Sweet. I substract the mean value of `a`
-# From the array `a` to center the datapoints at 0. I store the centered array in the variable
+# From the series `a` to center the datapoints at 0. I store the centered series in the variable
 # Named `a_centered`.
 a_centered = a - a_mean
 print("a centered == a - a_mean == {}\n".format(a_centered))
@@ -95,7 +95,7 @@ print("a centered == a - a_mean == {}\n".format(a_centered))
 # Calculate the z-score for each data point. Recall that the z-score is given by:
 
 # I used the variable `a_centered` divide by `a_stddev` to calculate the Z-Score of
-# array `a`. Z-Score tells us how many standard deviations a datapoint is from the mean.
+# series `a`. Z-Score tells us how many standard deviations a datapoint is from the mean.
 a_zscore = a_centered / a_stddev
 print("a z-score == {}".format(a_zscore))
 
@@ -160,7 +160,7 @@ squares_of_a = [num ** 2 for num in a]
 # only the odd numbers
 
 # Using a list comprehension with an if clause, I can create a new list from an existing one.
-# In this exercise I want to only store values in the new array `odds_in_a` if they are odd.
+# In this exercise I want to only store values in a new list if they're odd.
 # Each iteration I compare the value in the if clause. Inside the If clause I compare a
 # Value in a conditional expression. If the value is NOT evenly divisible by 2, then it's
 # an odd number. Once the list comprehension is finished evaluating, I store the new list
@@ -189,7 +189,7 @@ b = [
 # **Hint, you'll first need to make sure that the "b" variable is a numpy array**
 
 # I use the `np.array` function to cast b from type list -> numpy.ndarray
-# One `b` is converted, I can call `np.sum` directly on array `b` to return the total
+# Once `b` is converted, I can call `np.sum` directly on Array `b` to return the total
 # Of all values in `b`. I store that value in a variable called `sum_of_b`
 b = np.array(b)
 sum_of_b = b.sum()
