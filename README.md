@@ -1,2 +1,7 @@
-"Data Visualization Libraries"
-Matplotlib, Seaborn
+# Numpy
+
+# Pandas
+
+# Matplotlib
+
+# Seaborn
